@@ -16,18 +16,12 @@
 
         <main>
             {{--  Inicio do main  --}}
-            @yield('content_admin')
+            <div class="container">
+                <div class="row">
+                    @yield('content_admin')
+                </div>
+            </div>
             {{--  Fim do main  --}}
         </main>
-
-        <footer>
-            {{--  Inicio do footer  --}}
-            @livewireScripts
-
-            @yield('scripts_admin')
-            {{--  Fim do main  --}}
-        </footer>
-    </body>
-</html>
 @endsection
 

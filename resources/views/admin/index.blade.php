@@ -7,6 +7,6 @@
     </div>
 @endsection
 
-@section('scripts_admin')
+@section('scripts')
 
 @endsection
