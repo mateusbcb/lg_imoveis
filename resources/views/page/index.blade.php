@@ -1,5 +1,7 @@
 @extends('layouts.page.page')
 
+@section('title', 'Principal')
+
 @section('content_page')
     <div>
         <div id="carousel" class="carousel slide carousel-fade mx-auto rounded shadow-lg my-5" style="width: 40%" data-bs-ride="carousel">
@@ -11,21 +13,21 @@
             <div class="carousel-inner">
                 {{--  data-bs-interval="5000" opicional, esse valor é o intervalo em milisegundos para cada item --}}
                 <div class="carousel-item active" data-bs-interval="5000">
-                    <img src="https://picsum.photos/id/10/1080" class="d-block w-100" alt="...">
+                    <img src="https://api.lorem.space/image/house?w=800&h=600&hash=8B7BCDC2" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>First slide label</h5>
                         <p>Some representative placeholder content for the first slide.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://picsum.photos/id/20/1080" class="d-block w-100" alt="...">
+                    <img src="https://api.lorem.space/image/house?w=800&h=600&hash=500B67FB" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Second slide label</h5>
                         <p>Some representative placeholder content for the first slide.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://picsum.photos/id/30/1080" class="d-block w-100" alt="...">
+                    <img src="https://api.lorem.space/image/house?w=800&h=600&hash=A89D0DE6" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Third slide label</h5>
                         <p>Some representative placeholder content for the first slide.</p>
@@ -48,39 +50,35 @@
                 <div class="col-lg-8 col-sm-12">
 
                     <div class="container px-4">
-                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
-                            <div class="col mb-4">
-                                <div class="p-3 border bg-light">Custom column padding</div>
-                            </div>
-                            <div class="col mb-4">
-                                <div class="p-3 border bg-light">Custom column padding</div>
-                            </div>
-                            <div class="col mb-4">
-                                <div class="p-3 border bg-light">Custom column padding</div>
-                            </div>
-                            <div class="col mb-4">
-                                <div class="p-3 border bg-light">Custom column padding</div>
-                            </div>
-                            <div class="col mb-4">
-                                <div class="p-3 border bg-light">Custom column padding</div>
-                            </div>
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3">
+                            @forelse ($properties as $property)
+                                <div class="col mb-4 d-flex flex-column text-center">
+                                    <div class="p-3 border bg-light">
+                                        <img src="{{ json_decode($property->images)[0] }}" alt="" class="w-75">
+                                        <p>{{ $property->city_id }}, {{ $property->district }}</p>
+                                        <p>R$ {{ number_format($property->price, 2, ',', '.') }}</p>
+                                        <p> + detalhes</p>
+                                    </div>
+                                </div>
+                            @empty
+                                <p>Nenhum Imovel!</p>
+                            @endforelse
                         </div>
                     </div>
-
+                    {{ $properties->links() }}
                 </div>
 
                 <div class="col-lg-4 col-sm-12">
 
-                    <div class="row row-cols-2 row-cols-sm-1">
+                    <div class="row row-cols-2 row-cols-lg-1">
                         <div class="col">
                             <h4>Categorias</h4>
-                            <ul>
-                                <li>Categoria 1</li>
-                                <li>Categoria 2</li>
-                                <li>Categoria 3</li>
-                                <li>Categoria 4</li>
-                                <li>Categoria 5</li>
-                                <li>Categoria 6</li>
+                            <ul class="list-group list-group-flush">
+                                @forelse($categories as $category)
+                                    <li class="list-group-item">{{ $category->name }}</li>
+                                @empty
+                                    <p>Nenhuma categoria</p>
+                                @endforelse
                             </ul>
                         </div>
                         <div class="col">

@@ -29,6 +29,7 @@ class CreatePropertiesTable extends Migration
             $table->Integer('garages')->nullable();
             $table->text('details')->nullable();
             $table->json('installations')->nullable();
+            $table->json('images')->nullable();
 
             $table->foreign('city_id')->references('id')->on('cities');
             $table->foreign('category_id')->references('id')->on('categories');

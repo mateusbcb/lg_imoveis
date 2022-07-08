@@ -76,8 +76,11 @@
                         </div>
                         <div class="col-8">
                             <select name="" id="" class="form-select w-100">
-                                <option value="1">Venda</option>
-                                <option value="2">Aluguel</option>
+                                @forelse($business as $key => $business)
+                                    <option value="{{ $business->id }}">{{ $business->name }}</option>
+                                @empty
+                                    <option value="--"></option>
+                                @endforelse
                             </select>
                         </div>
 
@@ -86,8 +89,11 @@
                         </div>
                         <div class="col-8">
                             <select name="" id="" class="form-select w-100">
-                                <option value="1">Casa</option>
-                                <option value="2">Apartamento</option>
+                                @forelse ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @empty
+                                    <option value="--"></option>
+                                @endforelse
                             </select>
                         </div>
 
@@ -96,8 +102,11 @@
                         </div>
                         <div class="col-8">
                             <select name="" id="" class="form-select w-100">
-                                <option value="1">Serra Negra</option>
-                                <option value="2">Jundiai</option>
+                                @forelse($cities as $key => $city)
+                                    <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                @empty
+                                    <option value="--"></option>
+                                @endforelse
                             </select>
                         </div>
                     </div>
