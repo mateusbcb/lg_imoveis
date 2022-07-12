@@ -4,9 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\City;
-use App\Models\Category;
-use App\Models\Business;
 
 class Property extends Model
 {
@@ -34,18 +31,18 @@ class Property extends Model
         'updated_at'
     ];
 
-    public function city()
+    public function cities()
     {
-        $this->belongsTo(City::class);
+        return $this->belongsto('App\Models\City', 'city_id', 'id');
     }
 
-    public function category()
+    public function categories()
     {
-        $this->belongsTo(Category::class);
+        return $this->belongsto('App\Models\Category', 'category_id', 'id');
     }
 
     public function business()
     {
-        $this->belongsTo(Business::class);
+        return $this->belongsto('App\Models\Business', 'business_id', 'id');
     }
 }

@@ -59,12 +59,13 @@ class PropertyFactory extends Factory
             ],
         ];
 
+        // https://api.lorem.space/image/house?w=800&h=600&hash=8B7BCDC2
         $images = [
-            'https://api.lorem.space/image/house?w=800&h=600&hash=8B7BCDC2',
-            'https://api.lorem.space/image/furniture?w=800&h=600&hash=500B67FB',
-            'https://api.lorem.space/image/furniture?w=800&h=600&hash=A89D0DE6',
-            'https://api.lorem.space/image/furniture?w=800&h=600&hash=225E6693',
-            'https://api.lorem.space/image/furniture?w=800&h=600&hash=BDC01094',
+            '0' => 'https://cdn.lorem.space/images/house/.cache/800x600/pexels-max-vakhtbovych-7031600.jpg',
+            '1' => 'https://cdn.lorem.space/images/house/.cache/800x600/pexels-max-vakhtbovych-7031407.jpg',
+            '2' => 'https://cdn.lorem.space/images/house/.cache/800x600/pexels-binyamin-mellish-1396132.jpg',
+            '3' => 'https://cdn.lorem.space/images/furniture/.cache/800x600/vincent-wachowiak-Yh7HRBScECs-unsplash.jpg',
+            '4' => 'https://cdn.lorem.space/images/furniture/.cache/800x600/mitch-moondae-zXFtsdi9dIc-unsplash.jpg',
         ];
 
         return [

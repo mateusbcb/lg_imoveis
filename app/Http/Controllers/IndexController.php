@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\City;
 use App\Models\Category;
-use App\Models\Property;
 use App\Models\Business;
 
 class IndexController extends Controller
@@ -17,19 +16,16 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $cities = City::all();
+        // $cities = City::all();
 
-        $categories = Category::all();
+        // $categories = Category::all();
 
-        $business = Business::all();
-
-        $properties = Property::paginate(15);
+        // $business = Business::all();
 
         return view('page.index',[
-            'cities' => $cities,
-            'categories' => $categories,
-            'business' => $business,
-            'properties' => $properties
+            // 'cities' => $cities,
+            // 'categories' => $categories,
+            // 'business' => $business,
         ]);
     }
 

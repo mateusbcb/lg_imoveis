@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\IndexController;
+// use App\Http\Controllers\IndexController;
+use App\Http\Livewire\PageIndex;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,8 @@ use App\Http\Controllers\IndexController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [IndexController::class, 'index'])->name('page.index');
+// Route::get('/', [IndexController::class, 'index'])->name('page.index');
+Route::get('/', PageIndex::class)->name('page.index');
 
 Route::get('/admin', function () {
     return view('admin.index');

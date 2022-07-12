@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Property;
 
 class Category extends Model
 {
@@ -18,8 +17,8 @@ class Category extends Model
         'updated_at'
     ];
 
-    public function property()
+    public function properties()
     {
-        $this->hasOne(Property::class);
+        return $this->HasMany('App\Models\Property', 'category_id', 'id');
     }
 }

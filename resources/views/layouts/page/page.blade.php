@@ -44,7 +44,7 @@
                             <li class="nav-item">
                                 <form class="d-flex" role="search">
                                     <div class="input-group input-group-sm">
-                                        <input type="search" class="form-control" placeholder="Pesquisar por código" aria-label="Pesquisar por código" aria-describedby="basic-addon1">
+                                        <input type="search" name="" class="form-control" placeholder="Pesquisar por código" aria-label="Pesquisar por código" aria-describedby="basic-addon1">
                                         <button class="btn btn-secondary" type="button" id="button-addon1">OK</button>
                                     </div>
                                 </form>
@@ -64,51 +64,6 @@
                                 <a class="nav-link active fw-bold fs-5" aria-current="page" href="#">CONTATO</a>
                             </li>
                         </ul>
-                    </div>
-                </div>
-            </nav>
-
-            <nav class="mx-auto py-3" style="background: #004660">
-                <div class="container">
-                    <div class="d-flex align-items-center row row-cols-1 row-cols-lg-6 row-cols-md-4">
-                        <div class="col-4 text-white">
-                            TIPO DE NEGÓCIO
-                        </div>
-                        <div class="col-8">
-                            <select name="" id="" class="form-select w-100">
-                                @forelse($business as $key => $business)
-                                    <option value="{{ $business->id }}">{{ $business->name }}</option>
-                                @empty
-                                    <option value="--"></option>
-                                @endforelse
-                            </select>
-                        </div>
-
-                        <div class="col-4 text-white">
-                            TIPO DE IMÓVEL
-                        </div>
-                        <div class="col-8">
-                            <select name="" id="" class="form-select w-100">
-                                @forelse ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @empty
-                                    <option value="--"></option>
-                                @endforelse
-                            </select>
-                        </div>
-
-                        <div class="col-4 text-white">
-                            CIDADE
-                        </div>
-                        <div class="col-8">
-                            <select name="" id="" class="form-select w-100">
-                                @forelse($cities as $key => $city)
-                                    <option value="{{ $city->id }}">{{ $city->name }}</option>
-                                @empty
-                                    <option value="--"></option>
-                                @endforelse
-                            </select>
-                        </div>
                     </div>
                 </div>
             </nav>
