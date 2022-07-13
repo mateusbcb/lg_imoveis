@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 // use App\Http\Controllers\IndexController;
 use App\Http\Livewire\PageIndex;
+use App\Http\Controllers\PropertyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,8 @@ use App\Http\Livewire\PageIndex;
 */
 // Route::get('/', [IndexController::class, 'index'])->name('page.index');
 Route::get('/', PageIndex::class)->name('page.index');
+
+Route::get('/property/{id}', [PropertyController::class, 'index'])->name('page.property');
 
 Route::get('/admin', function () {
     return view('admin.index');

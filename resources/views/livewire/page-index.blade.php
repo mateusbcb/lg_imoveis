@@ -97,25 +97,54 @@
     <div class="row">
         <div class="col-lg-8 col-sm-12">
             <div class="container px-4">
-                <div class="row">
-                    <div class="col">
-                        {{ $properties->links() }}
-                    </div>
+                <div class="row mb-4">
                     <div class="col">
                         @php
                             $business_id = App\Models\Business::where('id', $business_id)->first('name');
                             $category_id = App\Models\Category::where('id', $category_id)->first('name');
                             $city_id     = App\Models\City::where('id', $city_id)->first('name');
                         @endphp
-                        Tipo de Negócio: {{ $business_id == '' ? '' :  $business_id->name}} <br>
-                        Tipo de Imóvel:  {{ $category_id == '' ? '' :  $category_id->name}} <br>
-                        Cidade:          {{ $city_id == '' ? '' :  $city_id->name}} <br>
+                        <h3>Filtros Aplicados</h3>
+                        @if( $business_id != '' || $category_id != '' || $city_id != '')
+                            <div class="card bg-light">
+                                <div class="row p-4">
+                                    <div class="col-12">
+                                        @if($business_id != '')
+                                            <p class="bg-white m-4 px-4 py-2 badge text-black-50 shadow-sm">
+                                                {{ $business_id == '' ? '' :  $business_id->name}}
+                                            </p>
+                                        @endif
+
+                                        @if($category_id != '')
+                                            <p class="bg-white m-4 px-4 py-2 badge text-black-50 shadow-sm">
+                                                {{ $category_id == '' ? '' :  $category_id->name}}
+                                            </p>
+                                        @endif
+
+                                        @if($city_id != '')
+                                            <p class="bg-white m-4 px-4 py-2 badge text-black-50 shadow-sm">
+                                                {{ $city_id == '' ? '' :  $city_id->name}}
+                                            </p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        @else
+                        <p>Nenhum Filtro Aplicado!</p>
+                        @endif
                     </div>
                 </div>
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+                <div class="row">
+                    @if($properties->hasPages())
+                        <div class="col">
+                            {{ $properties->links() }}
+                        </div>
+                    @endif
+                </div>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 mb-4">
 
                     @forelse ($properties as $property)
-                        <div class="col mb-4 d-flex flex-column text-center">
+                        <div class="col d-flex flex-column text-center">
                             <div class="border bg-light card">
 
                                 <div class="position-relative">
@@ -125,14 +154,18 @@
                                     </span>
                                 </div>
 
-                                {{--  <img src="{{ json_decode($property->images)[random_int(0, 2)] }}" alt="" class="card-img">
-                                <div class="card-img-overlay w-50">
-                                    <p class="bg-white">{{ $property->categories->name }}</p>
-                                </div>  --}}
-                                <p>{{ $property->business->name }}</p>
+                                {{--  <p>{{ $property->business->name }}</p>  --}}
                                 <p>{{ $property->cities->name }}, {{ $property->district }}</p>
                                 <p>R$ {{ number_format($property->price, 2, ',', '.') }}</p>
-                                <p> + detalhes</p>
+
+                                <a href="{{ route('page.property', ['id' => $property->id]) }}">
+                                    <span class="btn rounded-circle">
+                                        +
+                                    </span>
+                                    <span>
+                                        detalhes
+                                    </span>
+                                </a>
                             </div>
                         </div>
                     @empty
@@ -140,11 +173,15 @@
                     @endforelse
 
                 </div>
-                {{ $properties->links() }}
+                @if($properties->hasPages())
+                    <div class="col">
+                        {{ $properties->links() }}
+                    </div>
+                @endif
             </div>
         </div>
 
-        <div class="col-lg-4 col-sm-12">
+        <div class="col-lg-4 col-sm-12 mb-4">
 
             <div class="row row-cols-2 row-cols-lg-1">
                 <div class="col">
