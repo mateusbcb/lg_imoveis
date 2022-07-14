@@ -10,10 +10,10 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- CSS only -->
+    <!-- Bootstrap 5.2.0 core CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
-    <!-- CSS only -->
+    <!-- CSS page -->
     <link rel="stylesheet" href="{{ asset('css/page.css') }}">
 
     @livewireStyles
@@ -23,7 +23,7 @@
 
     @yield('content_global')
 
-    <footer class="">
+    <footer>
         {{--  Inicio do footer  --}}
             {{--  Inicio da Barra do footer  --}}
             <ul class="nav justify-content-center py-2 " style="background-image: url({{ asset('img/bg-menu.png') }})">

@@ -64,6 +64,27 @@
                                 <a class="nav-link active fw-bold fs-5" aria-current="page" href="#">CONTATO</a>
                             </li>
                         </ul>
+                        @if (Route::has('login'))
+                            <div class="hidden  sm:block">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    @auth
+                                        <li class="nav-item">
+                                            <a href="{{ route('admin.index') }}" class="nav-link active fw-bold fs-5">Home</a>
+                                        </li>
+                        @else
+                                        <li class="nav-item">
+                                            <a href="{{ route('login') }}" class="nav-link active fw-bold fs-5">Entrar</a>
+                                        </li>
+
+                                        {{--  @if (Route::has('register'))
+                                            <li class="nav-item">
+                                                <a href="{{ route('register') }}" class="nav-link active fw-bold fs-5">Register</a>
+                                            </li>
+                                        @endif  --}}
+                                    @endauth
+                                </ul>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </nav>

@@ -3,30 +3,49 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\City;
-use App\Models\Category;
-use App\Models\Business;
 
 class IndexController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Form Login.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function login()
     {
-        // $cities = City::all();
+        return view('login.login');
+    }
 
-        // $categories = Category::all();
+    /**
+     * Login.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function loginSend(Request $request)
+    {
 
-        // $business = Business::all();
+        return view('admin.index')->with('success', 'Cadastro Realizado com sucesso');
+    }
 
-        return view('page.index',[
-            // 'cities' => $cities,
-            // 'categories' => $categories,
-            // 'business' => $business,
-        ]);
+        /**
+     * Form Register.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function register()
+    {
+        return view('login.register');
+    }
+
+    /**
+     * Register.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function registerSend(Request $request)
+    {
+        dd($request->all());
+        return redirect()->route('login')->with('success', 'Cadastro Realizado com sucesso');
     }
 
     /**

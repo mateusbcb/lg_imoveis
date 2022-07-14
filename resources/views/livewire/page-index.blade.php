@@ -145,27 +145,30 @@
 
                     @forelse ($properties as $property)
                         <div class="col d-flex flex-column text-center">
-                            <div class="border bg-light card">
+                            <div class="border card border-0">
 
-                                <div class="position-relative">
-                                    <img src="{{ json_decode($property->images)[random_int(0, 2)] }}" alt="" class="card-img">
-                                    <span class="position-absolute top-0 end-0   text-bg-light px-4 py-2 mt-2 shadow rounded-start">
-                                        {{ $property->categories->name }}
-                                    </span>
-                                </div>
+                                <a class="btn btn-outline-primary border-0" href="{{ route('page.property', ['id' => $property->id]) }}">
+                                    <div class="position-relative">
+                                        <img src="{{ json_decode($property->images)[random_int(0, 2)] }}" alt="" class="card-img">
+                                        <span class="position-absolute top-0 end-0   text-bg-light px-4 py-2 mt-2 shadow rounded-start">
+                                            {{ $property->categories->name }}
+                                        </span>
+                                    </div>
 
-                                {{--  <p>{{ $property->business->name }}</p>  --}}
-                                <p>{{ $property->cities->name }}, {{ $property->district }}</p>
-                                <p>R$ {{ number_format($property->price, 2, ',', '.') }}</p>
+                                    <p>{{ $property->cities->name }}, {{ $property->district }}</p>
 
-                                <a href="{{ route('page.property', ['id' => $property->id]) }}">
-                                    <span class="btn rounded-circle">
-                                        +
-                                    </span>
-                                    <span>
-                                        detalhes
-                                    </span>
+                                    <p>R$ {{ number_format($property->price, 2, ',', '.') }}</p>
+
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                        </svg>
+                                        <span>
+                                            detalhes
+                                        </span>
+                                    </div>
                                 </a>
+
                             </div>
                         </div>
                     @empty

@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-// use App\Http\Controllers\IndexController;
 use App\Http\Livewire\PageIndex;
+
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PropertyController;
 
 /*
@@ -16,11 +17,14 @@ use App\Http\Controllers\PropertyController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/', [IndexController::class, 'index'])->name('page.index');
 Route::get('/', PageIndex::class)->name('page.index');
-
 Route::get('/property/{id}', [PropertyController::class, 'index'])->name('page.property');
+
+Route::get('/login', [IndexController::class, 'login'])->name('login');
+Route::get('/register', [IndexController::class, 'register'])->name('register');
+Route::post('/login_send', [IndexController::class, 'loginSend'])->name('login.send');
+Route::post('/register_send', [IndexController::class, 'registerSend'])->name('register.send');
 
 Route::get('/admin', function () {
     return view('admin.index');
-});
+})->name('admin.index');
