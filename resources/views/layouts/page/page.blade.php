@@ -69,7 +69,7 @@
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                     @auth
                                         <li class="nav-item">
-                                            <a href="{{ route('admin.index') }}" class="nav-link active fw-bold fs-5">Home</a>
+                                            <a href="{{ route('admin.index') }}" class="nav-link active fw-bold fs-5">Admin</a>
                                         </li>
                         @else
                                         <li class="nav-item">
@@ -92,7 +92,8 @@
         </header>
 
         <div>
-            {{--  Alertas / Mensagens / Avisos  --}}
+            @component('Components.alerts')
+            @endcomponent
         </div>
 
         <main>
@@ -104,4 +105,16 @@
             </div>
             {{--  Fim do main  --}}
         </main>
+
+        <footer>
+            {{--  Inicio da Barra do footer  --}}
+            <ul class="nav justify-content-center py-2 " style="background-image: url({{ asset('img/bg-menu.png') }})">
+                <li class="nav-item mx-4 fs-6">
+                    <small>
+                        LG Imóveis & Projetos - Rua Coronel Pedro Penteado, 377 - Centro - Serra Negra (SP)
+                    </small>
+                </li>
+            </ul>
+            {{--  Fim da barra do footer  --}}
+        </footer>
 @endsection

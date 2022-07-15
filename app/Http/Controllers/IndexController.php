@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
 class IndexController extends Controller
 {
     /**
@@ -25,6 +27,18 @@ class IndexController extends Controller
     {
 
         return view('admin.index')->with('success', 'Cadastro Realizado com sucesso');
+    }
+
+    /**
+     * Logout.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect(route('page.index'))->with('success', 'Saiu com sucesso!');
     }
 
         /**

@@ -21,10 +21,11 @@ Route::get('/', PageIndex::class)->name('page.index');
 Route::get('/property/{id}', [PropertyController::class, 'index'])->name('page.property');
 
 Route::get('/login', [IndexController::class, 'login'])->name('login');
+// Route::post('/login_send', [IndexController::class, 'loginSend'])->name('login.send');
 Route::get('/register', [IndexController::class, 'register'])->name('register');
-Route::post('/login_send', [IndexController::class, 'loginSend'])->name('login.send');
-Route::post('/register_send', [IndexController::class, 'registerSend'])->name('register.send');
+// Route::post('/register_send', [IndexController::class, 'registerSend'])->name('register.send');
+Route::get('/logout', [IndexController::class, 'logout'])->name('logout');
 
 Route::get('/admin', function () {
     return view('admin.index');
-})->name('admin.index');
+})->name('admin.index')->middleware('auth');

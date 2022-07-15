@@ -25,16 +25,6 @@
 
     <footer>
         {{--  Inicio do footer  --}}
-            {{--  Inicio da Barra do footer  --}}
-            <ul class="nav justify-content-center py-2 " style="background-image: url({{ asset('img/bg-menu.png') }})">
-                <li class="nav-item mx-4 fs-6">
-                    <small>
-                        LG Imóveis & Projetos - Rua Coronel Pedro Penteado, 377 - Centro - Serra Negra (SP)
-                    </small>
-                </li>
-            </ul>
-            {{--  Fim da barra do footer  --}}
-
             {{--  Inicio dos Scripts  --}}
             <!-- JavaScript Bundle with Popper -->
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
