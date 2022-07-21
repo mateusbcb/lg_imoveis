@@ -5,7 +5,6 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
@@ -53,10 +52,7 @@ class Login extends Component
             }
 
             return redirect(route('login'))->with('error', 'Usuario ou senha inválidos');
-
         }
-
-
     }
 
     public function render()

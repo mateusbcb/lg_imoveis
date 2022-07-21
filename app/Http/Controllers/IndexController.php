@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
+use App\Models\Property;
 
 class IndexController extends Controller
 {
+    /**
+     * *LOGIN / REGISTER
+    */
+
     /**
      * Form Login.
      *
@@ -16,17 +21,6 @@ class IndexController extends Controller
     public function login()
     {
         return view('login.login');
-    }
-
-    /**
-     * Login.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function loginSend(Request $request)
-    {
-
-        return view('admin.index')->with('success', 'Cadastro Realizado com sucesso');
     }
 
     /**
@@ -41,7 +35,7 @@ class IndexController extends Controller
         return redirect(route('page.index'))->with('success', 'Saiu com sucesso!');
     }
 
-        /**
+    /**
      * Form Register.
      *
      * @return \Illuminate\Http\Response
@@ -52,14 +46,23 @@ class IndexController extends Controller
     }
 
     /**
-     * Register.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function registerSend(Request $request)
+     * *ADMIN
+    */
+
+    /**
+     * Dashboard
+    */
+    public function  dashboard()
     {
-        dd($request->all());
-        return redirect()->route('login')->with('success', 'Cadastro Realizado com sucesso');
+        return view('admin.index');
+    }
+
+    /**
+     * Properties
+    */
+    public function properties()
+    {
+        return view('admin.properties');
     }
 
     /**
@@ -69,7 +72,7 @@ class IndexController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.properties_create');
     }
 
     /**
@@ -80,7 +83,80 @@ class IndexController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        if($request->hasFile('images')) {
+
+            $allowedfileExtension=['pdf','jpg','png','docx'];
+            $files = $request->file('images');
+
+            foreach($files as $file) {
+
+                $filename = $file->getClientOriginalName();
+                $extension = $file->getClientOriginalExtension();
+
+                $check = in_array($extension, $allowedfileExtension);
+
+                if($check) {
+
+                    $ImagesToUpload = [];
+
+                    foreach ($request->images as $image) {
+
+                        $filename = $image->store('images', 'public');
+
+                        array_push($ImagesToUpload, "storage/".$filename);
+
+                    }
+
+                    // echo "Upload Successfully";
+
+                } else {
+
+                    return redirect()->back()->with('error', 'Tipo de arquivo não suportado!')->withInput();
+                }
+
+            }
+        }
+
+        $installations = [
+            'Lazer' => [
+                $request->installations[0]
+            ],
+            'Instalações' => [
+                $request->installations[1]
+            ],
+            'Diversas' => [
+                $request->installations[2]
+            ],
+            'Gerais' => [
+                $request->installations[3],
+                $request->installations[4]
+            ],
+        ];
+
+        $Property = [
+            'name' => $request->name,
+            'price' => $request->price,
+            'condominium' => $request->condominium,
+            'city_id' => $request->city_id,
+            'category_id' => $request->category_id,
+            'business_id' => $request->business_id,
+            'area' => $request->area,
+            'building_area' => $request->building_area,
+            'district' => $request->district,
+            'bedrooms' => $request->bedrooms,
+            'bathrooms' => $request->bathrooms,
+            'garages' => $request->garages,
+            'details' => $request->details,
+            'installations' => json_encode($installations),
+            'images' => json_encode($ImagesToUpload),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ];
+
+        Property::create($Property);
+
+        return redirect()->route('admin.properties')->with('success', 'Imovel criado com sucesso');
     }
 
     /**

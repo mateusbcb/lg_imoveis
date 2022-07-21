@@ -1,5 +1,4 @@
 <div>
-
     <nav class="mx-auto py-3" style="background: #004660">
         <div class="container">
             <div class="d-flex align-items-center row row-cols-1 row-cols-lg-6 row-cols-md-4">

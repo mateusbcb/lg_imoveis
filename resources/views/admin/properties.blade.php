@@ -2,9 +2,8 @@
 
 @section('content_admin')
     <div class="container my-4">
-        <h1>Dasboard</h1>
-        <p>Conteudo principal do Admin</p>
-
+        <h1>Imóveis</h1>
+        @livewire('admin-properties')
     </div>
 @endsection
 

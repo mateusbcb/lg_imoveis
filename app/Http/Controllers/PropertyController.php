@@ -13,7 +13,9 @@ class PropertyController extends Controller
             'business',
             'categories',
             'cities',
-        ])->where('id', $id)->first();
+        ])
+        ->where('id', $id)
+        ->first();
 
         return view('page.property', [
             'property' => $property,

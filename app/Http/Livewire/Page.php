@@ -11,7 +11,7 @@ use App\Models\Property;
 
 use Livewire\WithPagination;
 
-class PageIndex extends Component
+class Page extends Component
 {
     use WithPagination;
     // Tema da paginação ['bootstrap'] ou ['tilwind']
@@ -64,7 +64,7 @@ class PageIndex extends Component
 
         $properties = $query->paginate(15);
 
-        return view('livewire.page-index', [
+        return view('livewire.page', [
             'business' => Business::all(),
             'categories' => Category::all(),
             'cities' => City::all(),

@@ -45,11 +45,11 @@
                                 @foreach(json_decode($property->images) as $key => $image)
                                     @if($key > 0)
                                         <div class="carousel-item" data-bs-interval="5000">
-                                            <img src="{{ $image }}" class="d-block w-100" alt="...">
+                                            <img src="{{ asset('storage') }}/{{ $image }}" class="d-block w-100" alt="{{ $image }}">
                                         </div>
                                     @else
                                         <div class="carousel-item active" data-bs-interval="5000">
-                                            <img src="{{ $image }}" class="d-block w-100" alt="...">
+                                            <img src="{{ asset('storage') }}/{{ $image }}" class="d-block w-100" alt="{{ $image }}">
                                         </div>
                                     @endif
                                 @endforeach
@@ -170,7 +170,7 @@
                         <div class="col">
                             <div class="border border-dark">
                                 <a href="">
-                                    <img src="{{ $image }}" class="img-fluid" alt="" data-bs-target="#carousel" data-bs-slide-to="{{ $key }}" aria-current="true" aria-label="Slide {{ $key }}">
+                                    <img src="{{ asset('storage') }}/{{ $image }}" class="img-fluid" alt="" data-bs-target="#carousel" data-bs-slide-to="{{ $key }}" aria-current="true" aria-label="Slide {{ $key }}">
                                 </a>
                             </div>
                         </div>

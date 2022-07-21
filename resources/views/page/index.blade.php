@@ -6,7 +6,7 @@
     <div>
 
         <div class="container">
-            @livewire('page-index')
+            @livewire('page')
         </div>
 
     </div>
