@@ -163,9 +163,9 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="district" class="col-sm-4 col-form-label">Estado</label>
+                            <label for="district" class="col-sm-4 col-form-label">Bairro</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control"  wire:model="district" id="district" {{-- name="district"--}} placeholder="Estado">
+                                <input type="text" class="form-control"  wire:model="district" id="district" {{-- name="district"--}} placeholder="Bairro">
                             </div>
                         </div>
 

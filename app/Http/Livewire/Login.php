@@ -48,7 +48,9 @@ class Login extends Component
 
             if (Auth::attempt($credentials)) {
 
-                return redirect(route('admin.index'))->with('success', 'Logado com sucesso');
+                $user = Auth::user()->name;
+
+                return redirect(route('admin.index'))->with('success', "Sejá bem-vindo(a) $user");
             }
 
             return redirect(route('login'))->with('error', 'Usuario ou senha inválidos');

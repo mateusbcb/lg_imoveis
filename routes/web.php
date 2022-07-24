@@ -3,9 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Livewire\Page;
+use App\Http\Livewire\AdminCities;
 
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\CityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +40,12 @@ Route::middleware('auth')->prefix('/admin')->group(function () {
 
         Route::get('/create', [IndexController::class, 'create'])->name('admin.properties.create');
         Route::post('/store', [IndexController::class, 'store'])->name('admin.properties.store');
+
+        Route::get('/searchDistrict', [IndexController::class, 'searchDistrict'])->name('admin.properties.searchDistrict');
+    });
+
+    Route::prefix('/cities')->group(function () {
+        Route::get('/', [CityController::class, 'index'])->name('admin.cities');
     });
 
 });

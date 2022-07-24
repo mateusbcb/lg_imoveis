@@ -1,6 +1,9 @@
 @extends('layouts.global.global')
 
 @section('content_global')
+    <!-- Custom styles for Admin page -->
+    <link href="{{ asset('css/sidebars.css') }}" rel="stylesheet">
+
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -83,13 +86,24 @@
         </svg>
 
         <main>
+            <nav class="navbar navbar-dark bg-dark fixed-top d-md-none">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="{{ route('page.index') }}">
+                        <img src="{{ asset('img/logo_icon.png') }}" alt="LG Imoveis" class="w-25">
+                        Imóveis
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </nav>
             {{--  Inicio do menu  --}}
-            <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+            <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark offcanvas-md offcanvas-start" tabindex="-1" id="offcanvasNavbar" style="width: 280px;">
                 <a href="{{ route('page.index') }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     {{--  <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>  --}}
                     <img src="{{ asset('img/logo_icon.png') }}" alt="LG" width="40">
                     <span class="fs-4">
-                        Imoveis
+                        Imóveis
                     </span>
                 </a>
                 <hr>
@@ -107,7 +121,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.properties') }}" class="nav-link text-white @if(request()->routeIS('admin.properties')) active @endif">
+                        <a href="{{ route('admin.properties') }}" class="nav-link text-white @if(request()->routeIS(['admin.properties', 'admin.properties.create'])) active @endif">
                             <svg class="bi me-2" width="16" height="16"><use xlink:href="#building"/></svg>
                             Imoveis
                         </a>
@@ -125,9 +139,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link text-white @if(request()->routeIS('admin.cities')) active @endif">
+                        <a href="{{ route('admin.cities') }}" class="nav-link text-white @if(request()->routeIS('admin.cities')) active @endif">
                             <svg class="bi me-2" width="16" height="16"><use xlink:href="#geo-alt"/></svg>
                             Cidades
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link text-white @if(request()->routeIS('admin.districts')) active @endif">
+                            <svg class="bi me-2" width="16" height="16"><use xlink:href="#geo-alt"/></svg>
+                            Bairros
                         </a>
                     </li>
                 </ul>
@@ -150,6 +170,7 @@
                     </ul>
                 </div>
             </div>
+
             {{--  Fim do menu  --}}
 
             <div class="b-example-divider"></div>
@@ -163,8 +184,10 @@
 
                 {{--  Inicio do main  --}}
                 <div>
-                    <div class="col">
+                    <div class="col overflow-auto mt-5">
+
                         @yield('content_admin')
+
                     </div>
                 </div>
                 {{--  Fim do main  --}}

@@ -141,7 +141,6 @@
                     @endif
                 </div>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 mb-4">
-
                     @forelse ($properties as $property)
                         <div class="col d-flex flex-column text-center">
                             <div class="border card border-0">

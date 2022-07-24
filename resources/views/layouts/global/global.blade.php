@@ -19,11 +19,12 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap-reboot.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">  --}}
 
+    {{--  select2  --}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
+
     <!-- CSS Global -->
     <link rel="stylesheet" href="{{ asset('css/global.css') }}">
-
-    <!-- Custom styles for Admin page -->
-    <link href="{{ asset('css/sidebars.css') }}" rel="stylesheet">
 
     @livewireStyles
 
@@ -52,10 +53,22 @@
             {{--  BsMultiSelect  --}}
             <script src="{{ asset('js/BsMultiSelect.min.js') }}"></script>
 
+            {{--  Select2  --}}
+            <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
             <script>
+                //tooltip
                 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
                 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
+                // alert close 3 seconds
+                const alert = bootstrap.Alert.getOrCreateInstance('.alert')
+                setTimeout(function() {
+                    alert.close()
+                }, 5000);
+
+                // multiselect - installations
+                /*
                 $(function(){
                     $("#installations").bsMultiSelect({
                         useCssPatch: true,
@@ -123,6 +136,7 @@
 
                     });
                 });
+                */
             </script>
 
 

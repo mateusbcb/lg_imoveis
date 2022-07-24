@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Property;
 
+use App\Models\Business;
+use App\Models\City;
+// use App\Models\Cidade;
+use App\Models\Category;
+use App\Models\District;
+// use App\Models\Bairro;
+
 class IndexController extends Controller
 {
     /**
@@ -72,7 +79,60 @@ class IndexController extends Controller
      */
     public function create()
     {
-        return view('admin.properties_create');
+        $business = Business::all();
+        $categories = Category::all();
+        /**
+         * Via API do IBGE
+         */
+        // $url = "https://servicodados.ibge.gov.br/api/v1/localidades/municipios";
+        // $json = file_get_contents($url);
+        // $cities = json_decode($json);
+
+        /**
+         * Via DB
+         */
+        //$cities = Cidade::all();
+        $cities = City::all();
+
+        return view('admin.properties_create', [
+            'business' => $business,
+            'cities' => $cities,
+            'categories' => $categories,
+        ]);
+    }
+
+    public function searchDistrict()
+    {
+        if (isset($_GET['city_id'])) {
+
+            $filtro = $_GET['city_id'];
+
+            if ($filtro) {
+
+                /*https://stackoverflow.com/questions/18796221/creating-a-select-box-with-a-search-option*/
+                /**
+                 * Input list datalist
+                  */
+                //$subFiltro = explode(" - ", $filtro);
+
+                /**
+                 * Via API do IBGE
+                 */
+                // $url = "https://servicodados.ibge.gov.br/api/v1/localidades/municipios/".trim($subFiltro[0])."/distritos";
+                // $json = file_get_contents($url);
+                // $districts = json_decode($json);
+
+                /**
+                 * Via DB
+                 */
+                //$districts = Bairro::where('cidade_id', $filtro)->get();
+                $districts = District::where('city_id', $filtro)->get();
+
+                foreach ($districts as $key => $district) {
+                    echo "<option value='$district->name'>$district->name</option> <br />";
+                }
+            }
+        }
     }
 
     /**
@@ -83,7 +143,7 @@ class IndexController extends Controller
      */
     public function store(Request $request)
     {
-
+        // upload de imagens
         if($request->hasFile('images')) {
 
             $allowedfileExtension=['pdf','jpg','png','docx'];
@@ -120,17 +180,16 @@ class IndexController extends Controller
 
         $installations = [
             'Lazer' => [
-                $request->installations[0]
+                $request->lazer
             ],
             'Instalações' => [
-                $request->installations[1]
+                $request->instalacoes
             ],
             'Diversas' => [
-                $request->installations[2]
+                $request->diversas
             ],
             'Gerais' => [
-                $request->installations[3],
-                $request->installations[4]
+                $request->gerais
             ],
         ];
 

@@ -35,16 +35,22 @@ class Property extends Model
 
     public function cities()
     {
-        return $this->belongsto('App\Models\City', 'city_id', 'id');
+        $foreign_key = 'city_id';
+        $owner_key = 'id';
+        return $this->belongsto('App\Models\City', $foreign_key, $owner_key);
     }
 
     public function categories()
     {
-        return $this->belongsto('App\Models\Category', 'category_id', 'id');
+        $foreign_key = 'category_id';
+        $owner_key = 'id';
+        return $this->belongsto('App\Models\Category', $foreign_key, $owner_key);
     }
 
     public function business()
     {
-        return $this->belongsto('App\Models\Business', 'business_id', 'id');
+        $foreign_key = 'business_id';
+        $owner_key = 'id';
+        return $this->belongsto('App\Models\Business', $foreign_key, $owner_key);
     }
 }
