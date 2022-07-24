@@ -5,9 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Page;
 use App\Http\Livewire\AdminCities;
 
-use App\Http\Controllers\IndexController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminPropertiesController;
 use App\Http\Controllers\PropertyController;
-use App\Http\Controllers\CityController;
+use App\Http\Controllers\AdminCityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,33 +21,42 @@ use App\Http\Controllers\CityController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+/**
+ * * PAGE
+ */
 Route::get('/', Page::class)->name('page.index');
 Route::get('/property/{id}', [PropertyController::class, 'index'])->name('page.property');
 
-Route::get('/login', [IndexController::class, 'login'])->name('login');
-// Route::post('/login_send', [IndexController::class, 'loginSend'])->name('login.send');
-Route::get('/register', [IndexController::class, 'register'])->name('register');
-// Route::post('/register_send', [IndexController::class, 'registerSend'])->name('register.send');
-Route::get('/logout', [IndexController::class, 'logout'])->name('logout');
+/**
+** LOGIN / REGISTER
+ */
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/register', [LoginController::class, 'register'])->name('register');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
+/**
+ * * ADMIN
+ */
 Route::middleware('auth')->prefix('/admin')->group(function () {
 
-    Route::get('/', [IndexController::class, 'dashboard'])->name('admin.index');
+    // Admin - Principal(Dashboard)
+    Route::get('/', [AdminController::class, 'dashboard'])->name('admin.index');
 
+    // Admin - Imoveis
     Route::prefix('/properties')->group(function () {
-        Route::get('/', [IndexController::class, 'properties'])->name('admin.properties');
-        Route::get('/view/{id}', [IndexController::class, 'properties_view'])->name('admin.properties.view');
-        Route::get('/edit/{id}', [IndexController::class, 'properties_edit'])->name('admin.properties.edit');
-        Route::get('/delete/{id}', [IndexController::class, 'properties_delete'])->name('admin.properties.delete');
+        Route::get('/', [AdminPropertiesController::class, 'properties'])->name('admin.properties');
+        Route::get('/view/{id}', [AdminPropertiesController::class, 'properties_view'])->name('admin.properties.view');
+        Route::get('/edit/{id}', [AdminPropertiesController::class, 'properties_edit'])->name('admin.properties.edit');
+        Route::get('/delete/{id}', [AdminPropertiesController::class, 'properties_delete'])->name('admin.properties.delete');
 
-        Route::get('/create', [IndexController::class, 'create'])->name('admin.properties.create');
-        Route::post('/store', [IndexController::class, 'store'])->name('admin.properties.store');
-
-        Route::get('/searchDistrict', [IndexController::class, 'searchDistrict'])->name('admin.properties.searchDistrict');
+        Route::get('/create', [AdminPropertiesController::class, 'create'])->name('admin.properties.create');
+        Route::post('/store', [AdminPropertiesController::class, 'store'])->name('admin.properties.store');
+        Route::get('/searchDistrict', [AdminPropertiesController::class, 'searchDistrict'])->name('admin.properties.searchDistrict');
     });
 
+    // Admin - Cidades
     Route::prefix('/cities')->group(function () {
-        Route::get('/', [CityController::class, 'index'])->name('admin.cities');
+        Route::get('/', [AdminCityController::class, 'index'])->name('admin.cities');
     });
 
 });
