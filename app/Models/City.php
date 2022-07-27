@@ -21,15 +21,14 @@ class City extends Model
 
     public function properties()
     {
-        $foreign_key = 'cidade_id';
+        $foreign_key = 'city_id';
         $local_key = 'id';
-
         return $this->HasMany('App\Models\Property', $foreign_key, $local_key);
     }
 
     public function districts()
     {
-        $foreign_key = 'cidade_id';
+        $foreign_key = 'city_id';
         $local_key = 'id';
         return $this->HasMany('App\Models\District', $foreign_key, $local_key);
     }

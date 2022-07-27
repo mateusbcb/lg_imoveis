@@ -1,11 +1,11 @@
 @extends('layouts.admin.admin')
 
-@section('title', 'Cidades')
+@section('title', 'Bairros')
 
 @section('content_admin')
     <div class="container my-4">
-        <h1>Cidades</h1>
-        @livewire('admin-cities')
+        <h1>Bairros</h1>
+        @livewire('admin-districts')
     </div>
 @endsection
 

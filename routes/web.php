@@ -9,7 +9,10 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminPropertiesController;
 use App\Http\Controllers\PropertyController;
-use App\Http\Controllers\AdminCityController;
+use App\Http\Controllers\AdminCitiesController;
+use App\Http\Controllers\AdminDistrictsController;
+use App\Http\Controllers\AdminBusinessController;
+use App\Http\Controllers\AdminCategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,19 +47,46 @@ Route::middleware('auth')->prefix('/admin')->group(function () {
 
     // Admin - Imoveis
     Route::prefix('/properties')->group(function () {
+        // lista de todos od imóveis
         Route::get('/', [AdminPropertiesController::class, 'properties'])->name('admin.properties');
-        Route::get('/view/{id}', [AdminPropertiesController::class, 'properties_view'])->name('admin.properties.view');
-        Route::get('/edit/{id}', [AdminPropertiesController::class, 'properties_edit'])->name('admin.properties.edit');
-        Route::get('/delete/{id}', [AdminPropertiesController::class, 'properties_delete'])->name('admin.properties.delete');
 
+        // exibir detalhes de um imóvel
+        Route::get('/view/{id}', [AdminPropertiesController::class, 'show'])->name('admin.properties.view');
+
+        // editar um imóvel
+        Route::get('/edit/{id}', [AdminPropertiesController::class, 'edit'])->name('admin.properties.edit');
+        // fazer a atualização das edições
+        Route::post('/edit/{id}/update', [AdminPropertiesController::class, 'update'])->name('admin.properties.update');
+
+        // criar um novo imóvel
         Route::get('/create', [AdminPropertiesController::class, 'create'])->name('admin.properties.create');
+        // salvar o novo imóvel
         Route::post('/store', [AdminPropertiesController::class, 'store'])->name('admin.properties.store');
+        // buscar bairro dependendo da cidade selecionada
         Route::get('/searchDistrict', [AdminPropertiesController::class, 'searchDistrict'])->name('admin.properties.searchDistrict');
+
+        // deletar um imóvel
+        Route::get('/delete/{id}', [AdminPropertiesController::class, 'destroy'])->name('admin.properties.destroy');
     });
 
     // Admin - Cidades
     Route::prefix('/cities')->group(function () {
-        Route::get('/', [AdminCityController::class, 'index'])->name('admin.cities');
+        Route::get('/', [AdminCitiesController::class, 'index'])->name('admin.cities');
+    });
+
+    // Admin - Bairros
+    Route::prefix('/districts')->group(function () {
+        Route::get('/', [AdminDistrictsController::class, 'index'])->name('admin.districts');
+    });
+
+    // Admin - Tipo de negócios
+    Route::prefix('/business')->group(function () {
+        Route::get('/', [AdminBusinessController::class, 'index'])->name('admin.business');
+    });
+
+    // Admin - Tipo de imóvel
+    Route::prefix('/categories')->group(function () {
+        Route::get('/', [AdminCategoriesController::class, 'index'])->name('admin.categories');
     });
 
 });

@@ -127,27 +127,27 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link text-white @if(request()->routeIS('admin.buisness')) active @endif">
-                            <svg class="bi me-2" width="16" height="16"><use xlink:href="#briefcase"/></svg>
-                            Tipos de Negócos
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link text-white @if(request()->routeIS('admin.categories')) active @endif">
-                            <svg class="bi me-2" width="16" height="16"><use xlink:href="#house"/></svg>
-                            Tipos de Imóvel
-                        </a>
-                    </li>
-                    <li>
                         <a href="{{ route('admin.cities') }}" class="nav-link text-white @if(request()->routeIS('admin.cities')) active @endif">
                             <svg class="bi me-2" width="16" height="16"><use xlink:href="#geo-alt"/></svg>
                             Cidades
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link text-white @if(request()->routeIS('admin.districts')) active @endif">
+                        <a href="{{ route('admin.districts') }}" class="nav-link text-white @if(request()->routeIS('admin.districts')) active @endif">
                             <svg class="bi me-2" width="16" height="16"><use xlink:href="#geo-alt"/></svg>
                             Bairros
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.business') }}" class="nav-link text-white @if(request()->routeIS('admin.business')) active @endif">
+                            <svg class="bi me-2" width="16" height="16"><use xlink:href="#briefcase"/></svg>
+                            Tipos de Negócos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.categories') }}" class="nav-link text-white @if(request()->routeIS('admin.categories')) active @endif">
+                            <svg class="bi me-2" width="16" height="16"><use xlink:href="#house"/></svg>
+                            Tipos de Imóvel
                         </a>
                     </li>
                 </ul>
@@ -178,6 +178,7 @@
             <div class="d-flex flex-column w-100">
 
                 <div>
+                    <!-- Alertas -->
                     @component('Components.alerts')
                     @endcomponent
                 </div>

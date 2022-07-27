@@ -26,7 +26,7 @@ class Cidade extends Model
 
     public function city()
     {
-        $foreign_key = 'cidade_id';
+        $foreign_key = 'city_id';
         $owner_key = 'id';
         return $this->belongsTo('App\Models\City', $foreign_key, $owner_key);
     }

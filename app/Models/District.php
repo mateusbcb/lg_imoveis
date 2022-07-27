@@ -22,6 +22,6 @@ class District extends Model
     {
         $foreign_key = 'city_id';
         $owner_key = 'id';
-        return $this->belongsTo('App\Model\City', $foreign_key, $owner_key);
+        return $this->belongsTo('App\Models\City', $foreign_key, $owner_key);
     }
 }

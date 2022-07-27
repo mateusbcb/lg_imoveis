@@ -55,33 +55,27 @@
 
     <div id="carousel" class="carousel slide carousel-fade mx-auto rounded shadow-lg my-5" style="width: 40%" data-bs-ride="carousel">
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            @foreach ($properties as $key => $propertie)
+                @if($key > 0)
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="{{ $key }}" aria-label="Slide {{ $key }}"></button>
+                @else
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="{{ $key }}" class="active" aria-current="true" aria-label="Slide {{ $key }}"></button>
+                @endif
+            @endforeach
         </div>
-        <div class="carousel-inner">
-            {{--  data-bs-interval="5000" opicional, esse valor é o intervalo em milisegundos para cada item --}}
-            <div class="carousel-item active" data-bs-interval="5000">
-                <img src="https://api.lorem.space/image/house?w=800&h=600&hash=8B7BCDC2" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>First slide label</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="https://api.lorem.space/image/house?w=800&h=600&hash=500B67FB" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Second slide label</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="https://api.lorem.space/image/house?w=800&h=600&hash=A89D0DE6" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Third slide label</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
-                </div>
-            </div>
+        <div class="carousel-inner overflow-hidden">
+            @foreach ($properties as $key => $propertie)
+                @if($key < 4)
+                    <div class="carousel-item active" data-bs-interval="5000">
+                        @if(count(json_decode($propertie->images)) > 0)
+                            <img src="{{ json_decode($propertie->images)[0] }}" class="d-block w-100" alt="...">
+                        @endif
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>{{ $propertie->categories->name }} para {{ $propertie->business->name }} em {{ $propertie->cities->name }} ({{ $propertie->cities->acronym_state }})</h5>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -147,7 +141,11 @@
 
                                 <a class="btn btn-outline-primary border-0" href="{{ route('page.property', ['id' => $property->id]) }}">
                                     <div class="position-relative">
-                                        <img src="{{ json_decode($property->images)[random_int(0, 2)] }}" alt="" class="card-img">
+                                        @if(count(json_decode($property->images)) > 0)
+                                            <img src="{{ json_decode($property->images)[0] }}" alt="" class="card-img">
+                                        @else
+                                            <img src="{{ asset('img/logo_icon.png') }}" alt="" class="card-img">
+                                        @endif
                                         <span class="position-absolute top-0 end-0   text-bg-light px-4 py-2 mt-2 shadow rounded-start">
                                             {{ $property->categories->name }}
                                         </span>

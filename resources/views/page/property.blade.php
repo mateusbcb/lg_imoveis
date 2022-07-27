@@ -45,11 +45,11 @@
                                 @foreach(json_decode($property->images) as $key => $image)
                                     @if($key > 0)
                                         <div class="carousel-item" data-bs-interval="5000">
-                                            <img src="{{ asset('storage') }}/{{ $image }}" class="d-block w-100" alt="{{ $image }}">
+                                            <img src="{{ asset($image) }}" class="d-block w-100" alt="{{ $image }}">
                                         </div>
                                     @else
                                         <div class="carousel-item active" data-bs-interval="5000">
-                                            <img src="{{ asset('storage') }}/{{ $image }}" class="d-block w-100" alt="{{ $image }}">
+                                            <img src="{{ asset($image) }}" class="d-block w-100" alt="{{ $image }}">
                                         </div>
                                     @endif
                                 @endforeach
@@ -149,14 +149,20 @@
                         <ul class="list-group list-group-flush">
                             @foreach(json_decode($property->installations) as $key => $installations)
                                 <li class="text-dark list-group-item">
-                                    {{ $key }}
-                                    <ul class="list-group list-group-flush">
-                                        @foreach($installations as $key => $installation)
-                                            <li class="text-black-50 list-group-item">
-                                                {{ $installation }}
-                                            </li>
-                                        @endforeach
-                                    </ul>
+                                    @if($key)
+                                        {{ $key }}
+                                        @forelse ((array)$installations as $installation)
+                                            <ul class="list-group list-group-flush">
+                                                <li class="text-black-50 list-group-item">
+                                                    {{ $installation }}
+                                                </li>
+                                            </ul>
+                                        @empty
+
+                                        @endforelse
+                                    @else
+                                        <p>Nenhuma instalação</p>
+                                    @endif
                                 </li>
                             @endforeach
                         </ul>
@@ -170,7 +176,7 @@
                         <div class="col">
                             <div class="border border-dark">
                                 <a href="">
-                                    <img src="{{ asset('storage') }}/{{ $image }}" class="img-fluid" alt="" data-bs-target="#carousel" data-bs-slide-to="{{ $key }}" aria-current="true" aria-label="Slide {{ $key }}">
+                                    <img src="{{ asset($image) }}" class="img-fluid" alt="" data-bs-target="#carousel" data-bs-slide-to="{{ $key }}" aria-current="true" aria-label="Slide {{ $key }}">
                                 </a>
                             </div>
                         </div>
