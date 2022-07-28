@@ -95,6 +95,18 @@ class AdminPropertiesController extends Controller
      */
     public function store(Request $request)
     {
+        $rules = [
+            'category_id' => 'required',
+            'business_id' => 'required',
+        ];
+
+        $message = [
+            'category_id.required' => 'O campo Tipo de Imóvel, é obrigatório',
+            'business_id.required' => 'O campo Tipo de Negócio, é obrigatório',
+        ];
+
+        $request->validate($rules, $message);
+
         // upload de imagens
         if($request->hasFile('images')) {
 
@@ -141,7 +153,7 @@ class AdminPropertiesController extends Controller
         if (isset($ImagesToUpload)) {
             $imagesJson = json_encode($ImagesToUpload);
         }else {
-            $imagesJson = [];
+            $imagesJson = json_encode([]);
         }
 
         Property::create([
@@ -175,7 +187,11 @@ class AdminPropertiesController extends Controller
      */
     public function show($id)
     {
-        //
+        $propery = Property::where('id', '=', $id)->first();
+
+        return view('admin.properties_view', [
+            'property' => $propery,
+        ]);
     }
 
     /**
@@ -303,6 +319,7 @@ class AdminPropertiesController extends Controller
         return redirect()->route('admin.properties')->with('success', 'Imovel Removido com sucesso');
     }
 
+    // função para remover as imagens do storage public
     public function removeStorageImages($id)
     {
         $images = Property::where('id', '=', $id)->first('images');

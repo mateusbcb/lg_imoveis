@@ -14,6 +14,7 @@ class Property extends Model
     protected $guarded = [];
 
     protected $fillable = [
+        'id',
         'name',
         'price',
         'condominium',

@@ -29,7 +29,7 @@
             </nav>
 
             <div class="container">
-                <a href="#">
+                <a href="{{ route('page.index') }}">
                     <img src="{{ asset('img/logo.png') }}" class="my-4" alt="LG Imoveis" style="width: 35%">
                 </a>
             </div>
@@ -42,17 +42,18 @@
                     <div class="collapse navbar-collapse" id="navbarMenu">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <form class="d-flex" role="search">
+                                <form class="d-flex" role="search" action="{{ route('page.search') }}" method="GET">
                                     <div class="input-group input-group-sm">
-                                        <input type="search" name="" class="form-control" placeholder="Pesquisar por código" aria-label="Pesquisar por código" aria-describedby="basic-addon1">
-                                        <button class="btn btn-secondary" type="button" id="button-addon1">OK</button>
+                                        @csrf
+                                        <input type="search" name="search" class="form-control" placeholder="Busca" aria-label="Pesquisar por código" aria-describedby="basic-addon1">
+                                        <button class="btn btn-secondary" type="submit" id="button-addon1">OK</button>
                                     </div>
                                 </form>
                             </li>
                         </ul>
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active fw-bold fs-5" aria-current="page" href="#">HOME</a>
+                                <a class="nav-link active fw-bold fs-5" aria-current="page" href="{{ route('page.index') }}">HOME</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active fw-bold fs-5" aria-current="page" href="#">EMPRESA</a>

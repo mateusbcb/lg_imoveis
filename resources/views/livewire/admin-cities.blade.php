@@ -92,6 +92,9 @@
                             <label for="acronym_state" class="col-sm-4 col-form-label">Estado</label>
                             <div class="col-sm-8">
                                 <select class="form-select @error('acronym_state') is-invalid @else is-valid @enderror" wire:model="acronym_state" id="acronym_state">
+                                    <optgroup label="Mais Utilizado">
+                                        <option value="SP">São Paulo</option>
+                                    </optgroup>
                                     <optgroup label="Estados">
                                         <option value="null" disabled>Escolha o Estado</option>
                                         <option value="AC">Acre</option>
@@ -159,6 +162,9 @@
                             <label for="acronym_state" class="col-sm-4 col-form-label">Estado</label>
                             <div class="col-sm-8">
                                 <select class="form-select @error('acronym_state') is-invalid @else is-valid @enderror" wire:model="acronym_state" id="acronym_state">
+                                    <optgroup label="Mais Utilizado">
+                                        <option value="SP">São Paulo</option>
+                                    </optgroup>
                                     <optgroup label="Estados">
                                         <option value="null" disabled>Escolha o Estado</option>
                                         <option value="AC">Acre</option>

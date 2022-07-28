@@ -15,7 +15,7 @@
                         <div class="row mb-3">
                             <label for="category_id" class="col-sm-4 col-form-label">Tipo de Imóvel</label>
                             <div class="col-sm-8">
-                                <select class="form-select form-select" id="category_id" name="category_id" aria-label=".form-select" required>
+                                <select class="form-select form-select @error('category_id') is-invalid @else is-valid @enderror" id="category_id" name="category_id" aria-label=".form-select" required>
                                     <option value="null" disabled selected>Escolha o tipo de imóvel</option>
                                     @forelse($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -23,6 +23,7 @@
                                         <option value="null">---</option>
                                     @endforelse
                                 </select>
+                                @error('category_id') <span class="badge bg-danger p-2">{{ $message }}</span> @enderror
                             </div>
                         </div>
                     </div>
@@ -31,7 +32,7 @@
                         <div class="row mb-3">
                             <label for="business_id" class="col-sm-4 col-form-label">Tipo de negócio</label>
                             <div class="col-sm-8">
-                                <select class="form-select form-select" id="business_id" name="business_id" aria-label=".form-select" required>
+                                <select class="form-select form-select @error('business_id') is-invalid @else is-valid @enderror" id="business_id" name="business_id" aria-label=".form-select" required>
                                     <option value="null" disabled selected>Escolha o tipo de negócio</option>
                                     @forelse($business as $business)
                                         <option value="{{ $business->id }}">{{ $business->name }}</option>
@@ -39,6 +40,7 @@
                                         <option value="null">---</option>
                                     @endforelse
                                 </select>
+                                @error('business_id') <span class="badge bg-danger p-2">{{ $message }}</span> @enderror
                             </div>
                         </div>
                     </div>

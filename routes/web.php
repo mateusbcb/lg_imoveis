@@ -30,6 +30,8 @@ use App\Http\Controllers\AdminCategoriesController;
 Route::get('/', Page::class)->name('page.index');
 Route::get('/property/{id}', [PropertyController::class, 'index'])->name('page.property');
 
+Route::get('/search', [PropertyController::class, 'search'])->name('page.search');
+
 /**
 ** LOGIN / REGISTER
  */
