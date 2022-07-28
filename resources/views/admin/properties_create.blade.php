@@ -167,9 +167,11 @@
                                         <label for="lazer">Lazer</label>
                                         <select class="form-select form-select-lg mb-3" id="lazer" name="lazer[]" multiple aria-label="multiple select lazer">
                                             <optgroup label="Lazer">
-                                                <option value="Lazer-0">Lazer 0</option>
-                                                <option value="Lazer-1">Lazer 1</option>
-                                                <option value="Lazer-2">Lazer 2</option>
+                                                <option value="piscina">piscina</option>
+                                                <option value="Campo de Futebol">Campo de Futebol</option>
+                                                <option value="Sala de jogos">Sala de jogos</option>
+                                                <option value="Sauna">Sauna</option>
+                                                <option value="Jardim">Jardim</option>
                                             </optgroup>
                                         </select>
                                     </div>
@@ -179,9 +181,25 @@
                                         <label for="gerais">Características gerais</label>
                                         <select class="form-select form-select-lg mb-3" id="gerais" name="gerais[]" multiple aria-label="multiple select gerais">
                                             <optgroup label="Características gerais">
-                                                <option value="gerais-0">gerais 0</option>
-                                                <option value="gerais-1">gerais 1</option>
-                                                <option value="gerais-2">gerais 2</option>
+                                                <option value="Quarto">Quarto</option>
+                                                <option value="Cozinha">Cozinha</option>
+                                                <option value="Copa">Copa</option>
+                                                <option value="Sala">Sala</option>
+                                                <option value="Banheiro">Banheiro</option>
+                                                <option value="Garagem">Garagem</option>
+                                                <option value="Quintal">Quintal</option>
+                                                <option value="Área de Serviço">Área de Serviço</option>
+                                                <option value="Mobiliado">Mobiliado</option>
+                                                <option value="Suite">Suite</option>
+                                                <option value="Sacada">Sacada</option>
+                                                <option value="Lavanderia">Lavanderia</option>
+                                                <option value="Lavabo">Lavabo</option>
+                                                <option value="Despensa">Despensa</option>
+                                                <option value="Lareira">Lareira</option>
+                                                <option value="Lareira">Lareira</option>
+                                                <option value="Vestiário">Vestiário</option>
+                                                <option value="Varanda">Varanda</option>
+                                                <option value="Edícula">Edícula</option>
                                             </optgroup>
                                         </select>
                                     </div>
@@ -191,9 +209,10 @@
                                         <label for="diversas">Diversas</label>
                                         <select class="form-select form-select-lg mb-3" id="diversas" name="diversas[]" multiple aria-label="multiple select diversas">
                                             <optgroup label="Diversas">
-                                                <option value="diversas-0">diversas 0</option>
-                                                <option value="diversas-1">diversas 1</option>
-                                                <option value="diversas-2">diversas 2</option>
+                                                <option value="WC para Empregados">WC para Empregados</option>
+                                                <option value="Mezanino">Mezanino</option>
+                                                <option value="Jardim">Jardim</option>
+                                                <option value="Piscina">Piscina</option>
                                             </optgroup>
                                         </select>
                                     </div>
@@ -203,9 +222,22 @@
                                         <label for="instalacoes">Instalacoes</label>
                                         <select class="form-select form-select-lg mb-3" id="instalacoes" name="instalacoes[]" multiple aria-label="multiple select instalacoes">
                                             <optgroup label="Instalações">
-                                                <option value="Instalações-0">Instalações 0</option>
-                                                <option value="Instalações-1">Instalações 1</option>
-                                                <option value="Instalações-2">Instalações 2</option>
+                                                <option value="Churrasqueira">Churrasqueira</option>
+                                                <option value="Forno de Pizza">Forno de Pizza</option>
+                                                <option value="Fogão a Lenha">Fogão a Lenha</option>
+                                                <option value="Armário de Cozinha">Armário de Cozinha</option>
+                                                <option value="Interfone">Interfone</option>
+                                                <option value="Piso Frio">Piso Frio</option>
+                                                <option value="Piso de Madeira">Piso de Madeira</option>
+                                                <option value="Portão Eletrônico">Portão Eletrônico</option>
+                                                <option value="Armário Embutido">Armário Embutido</option>
+                                                <option value="Poço Artesiano">Poço Artesiano</option>
+                                                <option value="Reservatório de Água">Reservatório de Água</option>
+                                                <option value="Forro de Madeira">Forro de Madeira</option>
+                                                <option value="Ar Condicionado">Ar Condicionado</option>
+                                                <option value="Sistema de Alarme">Sistema de Alarme</option>
+                                                <option value="Cerca Elétrica">Cerca Elétrica</option>
+                                                <option value="Luminárias">Luminárias</option>
                                             </optgroup>
                                         </select>
                                     </div>

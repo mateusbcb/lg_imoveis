@@ -99,10 +99,8 @@
 
         <main>
             {{--  Inicio do main  --}}
-            <div class="container">
-                <div class="row">
-                    @yield('content_page')
-                </div>
+            <div>
+                @yield('content_page')
             </div>
             {{--  Fim do main  --}}
         </main>
